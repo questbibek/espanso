@@ -1,0 +1,518 @@
+matches:
+  # Welcome message
+  - trigger: ":wttt"
+    replace: "Welcome to the team ❤️"
+
+  # WHOAMI (Windows user)
+  - trigger: ":whoami"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "whoami"
+
+  # Current date (15th Aug 2026 format)
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%dth %b %Y"
+
+  # Random Nepal phone number (97 or 98) - 10 digits
+  - trigger: ":phone"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -Command \"& '$env:USERPROFILE\\espanso-utility\\espanso-phone.bat'\""
+
+  # Random Nepal phone number with country code +977
+  - trigger: ":npphone"
+    replace: "977{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -Command \"& '$env:USERPROFILE\\espanso-utility\\espanso-phone.bat'\""
+
+  # Random First Name
+  - trigger: ":name"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -Command \"& '$env:USERPROFILE\\espanso-utility\\espanso-firstname.bat'\""
+
+  # Random Last Name
+  - trigger: ":lname"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -Command \"& '$env:USERPROFILE\\espanso-utility\\espanso-lastname.bat'\""
+
+  # Random Email
+  - trigger: ":email"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -Command \"& '$env:USERPROFILE\\espanso-utility\\espanso-email.bat'\""
+
+  # Fix Grammar - Just type :fixgrammar anywhere, it selects all and fixes
+  - trigger: ":allfixgrammar"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-allfixgrammar.ps1\""
+
+  # Fix Grammar - Short trigger
+  - trigger: ":afg"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-allfixgrammar.ps1\""
+
+  # Fix Grammar - Copy text, delete it, type :fixgrammar
+  - trigger: ":fixgrammar"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-fixgrammar.ps1\""
+
+  # Fix Grammar - Short trigger
+  - trigger: ":fg"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-fixgrammar.ps1\""
+
+  # GPT Assistant - Manual (copy, delete, type :gpt)
+  - trigger: ":gpt"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-gpt.ps1\""
+
+  # GPT Assistant - Auto select all
+  - trigger: ":allgpt"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-allgpt.ps1\""
+
+  # Reply to Email - Copy email, delete it, type :replythisemail
+  - trigger: ":replythisemail"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-replythisemail.ps1\""
+
+  # Smart Reply - Adapts to email/message/chat style
+  - trigger: ":replythis"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-replythis.ps1\""
+
+  # Math trigger
+  - trigger: ":math"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -NoProfile -File \"$env:USERPROFILE\\espanso-utility\\espanso-math.ps1\""
+
+  # Explain Math - With step-by-step explanation
+  - trigger: ":explainmath"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-explainmath.ps1\""
+
+  # Manual Translate
+  - trigger: ":toenglish"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-translate.ps1\" English"
+
+  - trigger: ":tonepali"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-translate.ps1\" Nepali"
+
+  - trigger: ":tohindi"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-translate.ps1\" Hindi"
+
+  - trigger: ":tospanish"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-translate.ps1\" Spanish"
+
+  - trigger: ":tofrench"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-translate.ps1\" French"
+
+  - trigger: ":tochinese"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-translate.ps1\" Chinese"
+
+  - trigger: ":tojapanese"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-translate.ps1\" Japanese"
+
+  - trigger: ":togerman"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-translate.ps1\" German"
+
+  # Auto Translate (selects all automatically)
+  - trigger: ":alltoenglish"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alltranslate.ps1\" English"
+
+  - trigger: ":alltonepali"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alltranslate.ps1\" Nepali"
+
+  - trigger: ":alltohindi"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alltranslate.ps1\" Hindi"
+
+  - trigger: ":alltospanish"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alltranslate.ps1\" Spanish"
+
+  - trigger: ":alltofrench"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alltranslate.ps1\" French"
+
+  - trigger: ":alltochinese"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alltranslate.ps1\" Chinese"
+
+  - trigger: ":alltojapanese"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alltranslate.ps1\" Japanese"
+
+  - trigger: ":alltogerman"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alltranslate.ps1\" German"
+
+  # Reply as Bibek - Manual
+  - trigger: ":replyasme"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-replyasme.ps1\""
+
+  # Reply as Bibek - Auto select all
+  - trigger: ":allreplyasme"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-allreplyasme.ps1\""
+
+  # Context-aware reply (inline context)
+  - trigger: ":replywithcontext"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-replywithcontext.ps1\""
+
+  # Context-aware reply - Short trigger
+  - trigger: ":rwc"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-replywithcontext.ps1\""
+
+  # Bug Task - Manual
+  - trigger: ":bugtask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-bugtask.ps1\""
+
+  # Bug Task - Auto select all
+  - trigger: ":allbugtask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-allbugtask.ps1\""
+
+  # User Story - Manual
+  - trigger: ":userstory"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-userstory.ps1\""
+
+  # User Story - Auto select all
+  - trigger: ":alluserstory"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-alluserstory.ps1\""
+
+  # Summarize - Manual
+  - trigger: ":summarize"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-summarize.ps1\""
+
+  # Summarize - Auto select all
+  - trigger: ":allsummarize"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-allsummarize.ps1\""
+
+  # Vrit Technologies Office Location
+  - trigger: ":maptovrit"
+    replace: |
+      Vrit Technologies HQ Office
+      Sankhamul, New Baneshwor
+      Near NIC Asia Bank and Prabhu Bank
+      Get Exact Direction from google maps: https://maps.app.goo.gl/EQY0nWKzzsrLACSyg
+
+  # Skill Shikshya Office Location
+  - trigger: ":maptoskill"
+    replace: |
+      Skill Shikshya Office
+      Sankhamul, New Baneshwor
+      Near NIC Asia Bank and Prabhu Bank
+      Get Exact Direction from google maps: https://maps.app.goo.gl/Cvra5dqFZdU1ZJyJE
+
+  # Bibek Email
+  - trigger: ":bibek@v"
+    replace: "bibek@vrittechnologies.com"
+
+  # Upload screenshot of ACTIVE monitor (where mouse is)
+  - trigger: ":fullss"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\cloudinary-screenshot-active.ps1\""
+    
+  # Upload image from clipboard to Uguu
+  - trigger: ":clipss"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\cloudinary-clipboard.ps1\""
+
+  # Dynamic password - Type :pass,32 then SPACE
+  - regex: ":pass,(?P<length>\\d+) "
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\generate-password-env.ps1\""
+
+  # Default password
+  - trigger: ":password"
+    replace: "{{output}}"
+    vars:
+      - name: length
+        type: echo
+        params:
+          echo: "16"
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\generate-password-env.ps1\""
+
+  # Quick instant meeting
+  - trigger: ":meeting"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\create-meeting.ps1\""
+
+  # Smart meeting scheduler
+  - trigger: ":schedule"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\schedule-meeting-smart.ps1\""
+
+  # Quick concise meaning
+  - trigger: ":meaning"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\word-meaning.ps1\""
+
+  # Full comprehensive analysis
+  - trigger: ":fullmeaning"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\word-full-meaning.ps1\""
+
+  # Draft professional email
+  - trigger: ":draft"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\draft-email.ps1\""
+
+  # Video content ideas with scoring
+  - trigger: ":content"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\content-video.ps1\""
+
+  # OCR screenshot
+  - trigger: ":ocr"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\ocr-screenshot.ps1\""
+
+  # Social media captions
+  - trigger: ":caption"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\caption-social.ps1\""
+
+  # Google Sheets formula
+  - trigger: ":sheet"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\sheets-formula.ps1\""
