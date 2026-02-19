@@ -8,7 +8,6 @@ This guide explains how to reset and restore your Espanso config folder from a G
 
 - [Espanso](https://espanso.org/) installed
 - [Git](https://git-scm.com/) installed
-- Your Espanso config hosted in a Git repository
 
 ---
 
