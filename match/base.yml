@@ -516,3 +516,21 @@ matches:
         type: shell
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\sheets-formula.ps1\""
+
+# Regex Generator
+  - trigger: ":regex"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-regex.ps1\""
+
+# Git Commit Message Generator
+  - trigger: ":commit"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-commit.ps1\""
