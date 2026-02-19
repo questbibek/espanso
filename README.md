@@ -67,4 +67,3 @@ espanso restart
 
 - Make sure Espanso is fully stopped before removing the folder to avoid file-lock issues.
 - If `espanso restart` doesn't work right away, try launching Espanso manually from the Start Menu or running `espanso start`.
-- To keep your config backed up, remember to `git push` after making changes to your match/config files.
