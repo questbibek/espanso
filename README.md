@@ -35,11 +35,8 @@ Navigate to the Roaming folder and clone your repo as the `espanso` folder:
 
 ```powershell
 cd "C:\Users\unrav\AppData\Roaming"
-git clone <YOUR_REPO_URL> espanso
+git clone https://github.com/questbibek/espanso.git espanso
 ```
-
-> Replace `<YOUR_REPO_URL>` with the URL of your Git repository.  
-> The folder name `espanso` at the end ensures the repo is cloned into the correct directory.
 
 ---
 
@@ -57,7 +54,7 @@ espanso restart
 espanso stop
 Remove-Item -Recurse -Force "C:\Users\unrav\AppData\Roaming\espanso"
 cd "C:\Users\unrav\AppData\Roaming"
-git clone <YOUR_REPO_URL> espanso
+git clone https://github.com/questbibek/espanso.git espanso
 espanso restart
 ```
 
