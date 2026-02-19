@@ -24,7 +24,7 @@ espanso stop
 ### 2. Remove the Existing Config Folder
 
 ```powershell
-Remove-Item -Recurse -Force "C:\Users\unrav\AppData\Roaming\espanso"
+Remove-Item -Recurse -Force "$env:APPDATA\espanso"
 ```
 
 ---
@@ -34,7 +34,7 @@ Remove-Item -Recurse -Force "C:\Users\unrav\AppData\Roaming\espanso"
 Navigate to the Roaming folder and clone your repo as the `espanso` folder:
 
 ```powershell
-cd "C:\Users\unrav\AppData\Roaming"
+cd "$env:APPDATA"
 git clone https://github.com/questbibek/espanso.git espanso
 ```
 
@@ -52,8 +52,8 @@ espanso restart
 
 ```powershell
 espanso stop
-Remove-Item -Recurse -Force "C:\Users\unrav\AppData\Roaming\espanso"
-cd "C:\Users\unrav\AppData\Roaming"
+Remove-Item -Recurse -Force "$env:APPDATA\espanso"
+cd "$env:APPDATA"
 git clone https://github.com/questbibek/espanso.git espanso
 espanso restart
 ```
