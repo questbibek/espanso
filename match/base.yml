@@ -534,3 +534,13 @@ matches:
         type: shell
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-commit.ps1\""
+
+
+# Form Filler
+  - trigger: ":fill"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-fill.ps1\""
