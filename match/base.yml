@@ -404,7 +404,7 @@ matches:
         type: shell
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\cloudinary-screenshot-active.ps1\""
-    
+
   # Upload image from clipboard to Uguu
   - trigger: ":clipss"
     replace: "{{output}}"
@@ -517,7 +517,7 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\sheets-formula.ps1\""
 
-# Regex Generator
+  # Regex Generator
   - trigger: ":regex"
     replace: "{{output}}"
     vars:
@@ -526,7 +526,7 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-regex.ps1\""
 
-# Git Commit Message Generator
+  # Git Commit Message Generator
   - trigger: ":commit"
     replace: "{{output}}"
     vars:
@@ -535,8 +535,7 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-commit.ps1\""
 
-
-# Form Filler
+  # Form Filler
   - trigger: ":fill"
     replace: "{{output}}"
     vars:
@@ -545,7 +544,7 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-fill.ps1\""
 
-# Git command generator
+  # Git command generator
   - trigger: ":git"
     replace: "{{output}}"
     vars:
@@ -554,7 +553,7 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-git.ps1\""
 
-# Git Bash command
+  # Git Bash command
   - trigger: ":bash"
     replace: "{{output}}"
     vars:
@@ -580,3 +579,40 @@ matches:
         type: shell
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-ubuntu.ps1\""
+
+  # Upload file (Ctrl+C in Explorer anywhere) to Cloudflare R2 → pastes link
+  - trigger: ":r2upload"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\r2-upload.ps1\""
+
+  # Delete object matching Ctrl+C'd filename from R2 bucket
+  - trigger: ":r2delete"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\r2-delete.ps1\""
+
+  # Delete ALL objects in the bucket
+  - trigger: ":r2-clear-all"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\r2-clear-core.ps1\" -OlderThanDays 0"
+
+  # Delete objects older than N days — usage: :r2-7-clear / :r2-30-clear / :r2-61-clear
+  # Note: {{days}} is injected directly from the regex capture group into the cmd
+  - regex: ":r2-(?P<days>\\d+)-clear"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\r2-clear-core.ps1\" -OlderThanDays {{days}}"
