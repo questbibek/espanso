@@ -616,3 +616,39 @@ matches:
         type: shell
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\r2-clear-core.ps1\" -OlderThanDays {{days}}"
+
+  # Upload file(s) (Ctrl+C in Explorer) to Cloudinary → pastes link(s)
+  - trigger: ":cloudinaryupload"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\cloudinary-upload.ps1\""
+
+  # Delete file(s) (Ctrl+C in Explorer) from Cloudinary by public_id
+  - trigger: ":cloudinarydelete"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\cloudinary-delete.ps1\""
+
+  # Delete ALL resources from Cloudinary
+  - trigger: ":cloudinary-clear-all"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\cloudinary-clear-core.ps1\" -OlderThanDays 0"
+
+  # Delete Cloudinary resources older than N days — :cloudinary-7-clear / :cloudinary-30-clear
+  - regex: ":cloudinary-(?P<days>\\d+)-clear"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\cloudinary-clear-core.ps1\" -OlderThanDays {{days}}"
