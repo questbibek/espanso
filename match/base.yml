@@ -652,3 +652,11 @@ matches:
         type: shell
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\cloudinary-clear-core.ps1\" -OlderThanDays {{days}}"
+  
+  - trigger: ":paraphrase"
+    replace: "{{output}}"
+    vars:
+    - name: output
+      type: shell
+      params:
+        cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-paraphrase.ps1\""
