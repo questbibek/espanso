@@ -1,40 +1,637 @@
-# espanso match file
-
-# For a complete introduction, visit the official docs at: https://espanso.org/docs/
-
-# You can use this file to define the base matches (aka snippets)
-# that will be available in every application when using espanso.
-
-# Matches are substitution rules: when you type the "trigger" string
-# it gets replaced by the "replace" string.
-
-# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
-
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
 
-  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+  # ── Test ────────────────────────────────────────────────────────────────────
 
-  # But matches can also be dynamic:
+  - trigger: ":wttt"
+    replace: "Welcome to the team ❤️"
 
-  # Print the current date
+  # ── Personal Info ────────────────────────────────────────────────────────────
+
+  - trigger: ":bibek@v"
+    replace: "bibek@vrittechnologies.com"
+
+  - trigger: ":maptovrit"
+    replace: |
+      Vrit Technologies HQ Office
+      Sankhamul, New Baneshwor
+      Near NIC Asia Bank and Prabhu Bank
+      Get Exact Direction from google maps: https://maps.app.goo.gl/EQY0nWKzzsrLACSyg
+
+  - trigger: ":maptoskill"
+    replace: |
+      Skill Shikshya Office
+      Sankhamul, New Baneshwor
+      Near NIC Asia Bank and Prabhu Bank
+      Get Exact Direction from google maps: https://maps.app.goo.gl/Cvra5dqFZdU1ZJyJE
+
+  # ── Date & System ────────────────────────────────────────────────────────────
+
   - trigger: ":date"
     replace: "{{mydate}}"
     vars:
       - name: mydate
         type: date
         params:
-          format: "%m/%d/%Y"
+          format: "%dth %b %Y"
 
-  # Print the output of a shell command
-  - trigger: ":shell"
+  - trigger: ":whoami"
     replace: "{{output}}"
     vars:
       - name: output
         type: shell
         params:
-          cmd: "echo 'Hello from your shell'"
+          cmd: "whoami"
 
-  # And much more! For more information, visit the docs: https://espanso.org/docs/
+  # ── Passwords ────────────────────────────────────────────────────────────────
+
+  - trigger: ":password"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "openssl rand -base64 24 | tr -d '=+/' | cut -c1-16"
+
+  - regex: ":pass,(?P<length>\\d+) "
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "openssl rand -base64 48 | tr -d '=+/' | cut -c1-{{length}}"
+
+  # ── Random Data ──────────────────────────────────────────────────────────────
+
+  - trigger: ":phone"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-phone.sh"
+
+  - trigger: ":npphone"
+    replace: "977{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-phone.sh"
+
+  - trigger: ":name"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-firstname.sh"
+
+  - trigger: ":lname"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-lastname.sh"
+
+  - trigger: ":email"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-email.sh"
+
+  # ── Grammar ──────────────────────────────────────────────────────────────────
+
+  - trigger: ":fixgrammar"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-fixgrammar.sh"
+
+  - trigger: ":fg"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-fixgrammar.sh"
+
+  - trigger: ":allfixgrammar"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-allfixgrammar.sh"
+
+  - trigger: ":afg"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-allfixgrammar.sh"
+
+  # ── GPT ──────────────────────────────────────────────────────────────────────
+
+  - trigger: ":gpt"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-gpt.sh"
+
+  - trigger: ":allgpt"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-allgpt.sh"
+
+  # ── Paraphrase ───────────────────────────────────────────────────────────────
+
+  - trigger: ":paraphrase"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-paraphrase.sh"
+
+  - trigger: ":pp"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-paraphrase.sh"
+
+  # ── Summarize ────────────────────────────────────────────────────────────────
+
+  - trigger: ":summarize"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-summarize.sh"
+
+  - trigger: ":allsummarize"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-allsummarize.sh"
+
+  # ── Translation (Manual) ─────────────────────────────────────────────────────
+
+  - trigger: ":toenglish"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-translate.sh English"
+
+  - trigger: ":tonepali"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-translate.sh Nepali"
+
+  - trigger: ":tohindi"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-translate.sh Hindi"
+
+  - trigger: ":tospanish"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-translate.sh Spanish"
+
+  - trigger: ":tofrench"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-translate.sh French"
+
+  - trigger: ":tochinese"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-translate.sh Chinese"
+
+  - trigger: ":tojapanese"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-translate.sh Japanese"
+
+  - trigger: ":togerman"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-translate.sh German"
+
+  # ── Translation (Auto) ───────────────────────────────────────────────────────
+
+  - trigger: ":alltoenglish"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alltranslate.sh English"
+
+  - trigger: ":alltonepali"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alltranslate.sh Nepali"
+
+  - trigger: ":alltohindi"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alltranslate.sh Hindi"
+
+  - trigger: ":alltospanish"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alltranslate.sh Spanish"
+
+  - trigger: ":alltofrench"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alltranslate.sh French"
+
+  - trigger: ":alltochinese"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alltranslate.sh Chinese"
+
+  - trigger: ":alltojapanese"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alltranslate.sh Japanese"
+
+  - trigger: ":alltogerman"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alltranslate.sh German"
+
+  # ── Reply ────────────────────────────────────────────────────────────────────
+
+  - trigger: ":replyasme"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-replyasme.sh"
+
+  - trigger: ":allreplyasme"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-allreplyasme.sh"
+
+  - trigger: ":replythis"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-replythis.sh"
+
+  - trigger: ":replythisemail"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-replythisemail.sh"
+
+  - trigger: ":replywithcontext"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-replywithcontext.sh"
+
+  - trigger: ":rwc"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-replywithcontext.sh"
+
+  - trigger: ":draft"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/draft-email.sh"
+
+  # ── Math ─────────────────────────────────────────────────────────────────────
+
+  - trigger: ":math"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-math.sh"
+
+  - trigger: ":explainmath"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-explainmath.sh"
+
+  # ── Word Meaning ─────────────────────────────────────────────────────────────
+
+  - trigger: ":meaning"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/word-meaning.sh"
+
+  - trigger: ":fullmeaning"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/word-full-meaning.sh"
+
+  # ── Productivity ─────────────────────────────────────────────────────────────
+
+  - trigger: ":bugtask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-bugtask.sh"
+
+  - trigger: ":allbugtask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-allbugtask.sh"
+
+  - trigger: ":userstory"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-userstory.sh"
+
+  - trigger: ":alluserstory"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-alluserstory.sh"
+
+  - trigger: ":sheet"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/sheets-formula.sh"
+
+  - trigger: ":content"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/content-video.sh"
+
+  - trigger: ":caption"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/caption-social.sh"
+
+  # ── Dev Tools ────────────────────────────────────────────────────────────────
+
+  - trigger: ":commit"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-commit.sh"
+
+  - trigger: ":git"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-git.sh"
+
+  - trigger: ":bash"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-bash.sh"
+
+  - trigger: ":ubuntu"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-ubuntu.sh"
+
+  - trigger: ":regex"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-regex.sh"
+
+  - trigger: ":fill"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/espanso-fill.sh"
+
+  # ── Screenshot & Image ───────────────────────────────────────────────────────
+
+  - trigger: ":fullss"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/cloudinary-screenshot.sh"
+
+  - trigger: ":clipss"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/cloudinary-clipboard.sh"
+
+  - trigger: ":ocr"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/ocr-screenshot.sh"
+
+  # ── Cloudinary ───────────────────────────────────────────────────────────────
+
+  - trigger: ":cloudinaryupload"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/cloudinary-upload.sh"
+
+  - trigger: ":cloudinarydelete"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/cloudinary-delete.sh"
+
+  - trigger: ":cloudinary-clear-all"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/cloudinary-clear-core.sh 0"
+
+  - regex: ":cloudinary-(?P<days>\\d+)-clear"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/cloudinary-clear-core.sh {{days}}"
+
+  # ── Cloudflare R2 ────────────────────────────────────────────────────────────
+
+  - trigger: ":r2upload"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/r2-upload.sh"
+
+  - trigger: ":r2delete"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/r2-delete.sh"
+
+  - trigger: ":r2-clear-all"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/r2-clear-core.sh 0"
+
+  - regex: ":r2-(?P<days>\\d+)-clear"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/r2-clear-core.sh {{days}}"
+
+  # ── Meetings ─────────────────────────────────────────────────────────────────
+
+  - trigger: ":meeting"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/create-meeting.sh"
+
+  - trigger: ":schedule"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "bash $HOME/espanso-utility/schedule-meeting-smart.sh"
