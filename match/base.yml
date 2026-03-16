@@ -148,6 +148,7 @@ matches:
 
   - trigger: ":allgpt"
     replace: "{{output}}"
+    force_clipboard: true
     vars:
       - name: output
         type: shell
