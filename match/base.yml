@@ -50,7 +50,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "openssl rand -base64 24 | tr -d '=+/' | cut -c1-16"
+          cmd: "python3 -c \"import random, string; chars = string.ascii_lowercase + string.ascii_uppercase + string.digits + '!@#$%^&*'; pwd = [random.choice(string.ascii_lowercase), random.choice(string.ascii_uppercase), random.choice(string.digits), random.choice('!@#$%^&*')]; pwd += [random.choice(chars) for _ in range(12)]; random.shuffle(pwd); print(''.join(pwd))\""
 
   - regex: ":pass,(?P<length>\\d+) "
     replace: "{{output}}"
@@ -58,7 +58,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "openssl rand -base64 48 | tr -d '=+/' | cut -c1-{{length}}"
+          cmd: "python3 -c \"import random, string, sys; n=max(int('{{length}}'), 4); chars = string.ascii_lowercase + string.ascii_uppercase + string.digits + '!@#$%^&*'; pwd = [random.choice(string.ascii_lowercase), random.choice(string.ascii_uppercase), random.choice(string.digits), random.choice('!@#$%^&*')]; pwd += [random.choice(chars) for _ in range(n-4)]; random.shuffle(pwd); print(''.join(pwd))\""
 
   # ── Random Data ──────────────────────────────────────────────────────────────
 
