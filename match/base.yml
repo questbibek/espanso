@@ -670,7 +670,7 @@ matches:
         cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-paraphrase.ps1\""
 
   # Professional tone converter
-  - trigger: ":professional"
+  - trigger: ":formal"
     replace: "{{output}}"
     vars:
       - name: output
