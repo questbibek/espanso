@@ -668,3 +668,12 @@ matches:
       type: shell
       params:
         cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-paraphrase.ps1\""
+
+  # Professional tone converter
+  - trigger: ":professional"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\\espanso-utility\\professional-tone.ps1"
