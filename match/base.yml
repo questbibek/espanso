@@ -669,3 +669,21 @@ matches:
         type: shell
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\\espanso-utility\\professional-tone.ps1"
+
+# Roman Nepali fixer
+  - trigger: ":roman"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\\espanso-utility\\espanso-roman.ps1"
+
+# English-Roman translator (fixes grammar + translates to English)
+  - trigger: ":engroman"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\\espanso-utility\\espanso-engroman.ps1"
