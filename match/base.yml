@@ -138,6 +138,24 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\logallai.ps1\""
 
+  # Ask with live web search (current info) - copy question, delete, type :ask
+  - trigger: ":ask"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-ask.ps1\""
+
+  # Fact-check a claim with live web search - copy claim, delete, type :factcheck
+  - trigger: ":factcheck"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-factcheck.ps1\""
+
   # Reply to Email - Copy email, delete it, type :replythisemail
   - trigger: ":replythisemail"
     replace: "{{output}}"
