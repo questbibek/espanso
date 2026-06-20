@@ -102,8 +102,8 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-fixgrammar.ps1\""
 
-  # GPT Assistant - Manual (copy, delete, type :gpt)
-  - trigger: ":gpt"
+  # AI Assistant - Manual (copy, delete, type :ai)
+  - trigger: ":ai"
     replace: "{{output}}"
     vars:
       - name: output
@@ -111,14 +111,32 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-gpt.ps1\""
 
-  # GPT Assistant - Auto select all
-  - trigger: ":allgpt"
+  # AI Assistant - Auto select all
+  - trigger: ":allai"
     replace: "{{output}}"
     vars:
       - name: output
         type: shell
         params:
-          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-allgpt.ps1\""
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-allai.ps1\""
+
+  # AI Assistant (with provider info) - Manual
+  - trigger: ":logai"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\logai.ps1\""
+
+  # AI Assistant (with provider info) - Auto select all
+  - trigger: ":logallai"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\logallai.ps1\""
 
   # Reply to Email - Copy email, delete it, type :replythisemail
   - trigger: ":replythisemail"
