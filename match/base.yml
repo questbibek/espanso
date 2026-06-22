@@ -102,8 +102,17 @@ matches:
         params:
           cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-fixgrammar.ps1\""
 
-  # AI Assistant - Manual (copy, delete, type :ai)
+  # AI Assistant - Manual (copy, delete, type :ai or :gpt) - both follow AI_PRIMARY
   - trigger: ":ai"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\espanso-utility\\espanso-gpt.ps1\""
+
+  # AI Assistant - alias of :ai
+  - trigger: ":gpt"
     replace: "{{output}}"
     vars:
       - name: output
