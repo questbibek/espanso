@@ -58,6 +58,12 @@ git clone https://github.com/questbibek/espanso.git espanso
 espanso restart
 ```
 
+### Single-Line Command (Copy & Paste)
+
+```powershell
+espanso stop; Remove-Item -Recurse -Force "$env:APPDATA\espanso"; git clone https://github.com/questbibek/espanso.git "$env:APPDATA\espanso"; espanso restart
+```
+
 ---
 
 ## Notes
