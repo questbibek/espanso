@@ -4,6 +4,20 @@ This guide explains how to reset and restore your Espanso config folder from a G
 
 ---
 
+## ⚡ Easiest: one-line installer
+
+This config repo is normally set up automatically by the **espanso-utility** installer, which clones it to `%APPDATA%\espanso`, installs Git + Espanso, configures the AI scripts, and starts everything. From **PowerShell**:
+
+```powershell
+irm https://raw.githubusercontent.com/questbibek/espanso-utility/main/setup-espanso.ps1 | iex
+```
+
+Re-running it is safe — it `git pull`s the latest config instead of overwriting. See the [espanso-utility repo](https://github.com/questbibek/espanso-utility) for the full toolkit and trigger list.
+
+The steps below are the **manual** alternative — only needed if you want to reset/restore just this config folder by hand.
+
+---
+
 ## Prerequisites
 
 - [Espanso](https://espanso.org/) installed
